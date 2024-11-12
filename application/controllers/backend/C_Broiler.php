@@ -82,7 +82,7 @@ class C_Broiler extends CI_Controller {
 			"REG_DATE"				=> date('Ymd')
 		];
 
-		$hasil = $this->db->insert("TR_SS_ORDER_REQUEST", $data);
+		$hasil = $this->db->insert("TR_SS_ORDER_REQUEST", $order_request);
 		// echo "<pre/>";print_r($hasil);exit;
 		if ($hasil) {
 			$this->session->set_flashdata('message', '
