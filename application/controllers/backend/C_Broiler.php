@@ -66,20 +66,24 @@ class C_Broiler extends CI_Controller {
 			redirect('login');
 		}
 
-	    $ID_USER = $this->session->userdata('id_user');
-		$customer = $this->session->userdata('cust');
-		$YMD 		= date("Ymd");
-
-		$data = [
-			"REQUEST_NO" 	=> $this->generateOrderNo(),
-			"REQUEST_DATE"	=> date('Ymd'),
-			"QTY"			=> $this->input->post('qty'),
-			"BW"			=> $this->input->post('bw'),
-			"REG_CUST"		=> $customer,
-			"REG_DATE"		=> date('Ymd His'),
-			"REMARK"		=> $this->input->post('remark')
+		$order_request = [
+			"COMPANY"				=> "01",
+			"REQ_NO"				=> $this->generateOrderNo(),
+			"REQ_DATE"				=> date('Ymd'),
+			"ORDER_CLASS"			=> '11',
+			"CUSTOMER"				=> $this->session->userdata('cust'),
+			"CONTROL_NO"			=> ,
+			"REMARKS"				=> $this->input->post('remark'),
+			"STATUS"				=> "N",
+			"SEQ"					=> 1,
+			"ITEM"					=> '10001001',
+			"QTY"					=> $this->input->post('qty'),
+			"BW"					=> $this->input->post('bw'),
+			"CUST_PHONE_NO" 		=> $this->session->userdata('phone'),
+			"REG_DATE"				=> date('Ymd')
 		];
-		$hasil = $this->db->insert("TR_SS_ORDER_CUSTOMER_REQUEST", $data);
+
+		$hasil = $this->db->insert("TR_SS_ORDER_REQUEST", $data);
 		// echo "<pre/>";print_r($hasil);exit;
 		if ($hasil) {
 			$this->session->set_flashdata('message', '
@@ -99,17 +103,17 @@ class C_Broiler extends CI_Controller {
 
 	
 	private function generateOrderNo() {
-		$generated_no = date('Ymd')."RQCUST";
+		$generated_no = date('Ymd')."RQ";
 		$no = 1;
 		$today = date('Ymd');
-		$this->db->select('REQUEST_NO, REG_DATE');
-		$this->db->from('TR_SS_ORDER_CUSTOMER_REQUEST');
+		$this->db->select('REQ_NO, REG_DATE');
+		$this->db->from('TR_SS_ORDER_REQUEST');
 		$this->db->like('REG_DATE', $today, 'after');
 		$this->db->order_by('REG_DATE', 'DESC');
-		$this->db->order_by('REQUEST_NO', 'DESC');
+		$this->db->order_by('REQ_NO', 'DESC');
 		$latest_data = $this->db->get()->row();
 		if (!empty($latest_data)) {
-				$no = substr($latest_data->REQUEST_NO, -4);
+				$no = substr($latest_data->REQ_NO, -4);
 				$no += 1;
 		}
 		if ($no < 10) {
