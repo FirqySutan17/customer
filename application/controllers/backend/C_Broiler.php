@@ -72,7 +72,6 @@ class C_Broiler extends CI_Controller {
 			"REQ_DATE"				=> date('Ymd'),
 			"ORDER_CLASS"			=> '11',
 			"CUSTOMER"				=> $this->session->userdata('cust'),
-			"CONTROL_NO"			=> ,
 			"REMARKS"				=> $this->input->post('remark'),
 			"STATUS"				=> "N",
 			"SEQ"					=> 1,
