@@ -96,14 +96,6 @@
                                             <td style="text-align: center"><?= number_format($v['DELIVERY_QTY']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['DELIVERY_BW']) ?></td>
                                             <td style="text-align: center">
-                                                <!-- <a href="<?= admin_url('order/detail/'.$v['REQ_NO']) ?>" class="btn btn-sm btn-show-detail"><i class="fas fa-eye text-success"></i></a> -->
-                                                <?php if ($v['CONFIRM_STATUS'] != 'Y' && $v['STATUS'] == 'N'): ?>
-                                                    <a href="<?= admin_url('order/edit/'.$v['REQ_NO']) ?>" class="btn btn-sm btn-show-detail"><i class="fas fa-pencil text-warning"></i></a>
-                                                    <a href="javascript:void(0)" onclick="deleteRow(`<?= $v['REQ_NO'] ?>`)" class="btn btn-sm btn-show-detail"><i class="fas fa-xmark text-primary"></i></a>
-                                                <?php endif ?>
-                                                <?php if ($v['CONFIRM_STATUS'] == 'Y'): ?>
-                                                    <a href="<?= admin_url('order/pdf/'.$v['REQ_NO']) ?>" target="_blank" class="btn btn-sm btn-show-detail"><i class="fas fa-file-pdf text-danger"></i></a>
-                                                <?php endif ?>
                                             </td>
                                         </tr>
                                         <?php endforeach ?>
