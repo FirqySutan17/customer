@@ -16,7 +16,7 @@ class C_Broiler extends CI_Controller {
 	public function index() {
 		$customer   = $this->session->userdata('admin') == 'Y' ? "SHRH02" : $this->session->userdata('cust');
 		$sdate      = date("Ym01");
-		$edate      = date("Ymt");
+		$edate      = date("Ymd");
 		$list_customer = [];
 		if ($this->session->userdata('admin') == 'Y') {
 			$list_customer = $this->M_Code->data_customer()->result();
@@ -25,33 +25,24 @@ class C_Broiler extends CI_Controller {
 		    "customer"  => "",
 		    "sdate"     => "",
 		    "edate"     => "",
-		    "item"      => "",
-		    "no_order"  => ""
 		];
-		$where = "WHERE CUSTOMER = '$customer' AND (ORDER_DATE BETWEEN '$sdate' AND '$edate')";
+		$where = "WHERE A.CUSTOMER = '$customer' AND (A.REQ_DATE BETWEEN '$sdate' AND '$edate')";
 		if ($this->input->post('submit')) {
 		    $filter_customer    = !empty($this->input->post('customer')) ? $this->input->post('customer') : $customer;
 		    $filter_data["customer"] = $filter_customer;
-		    if (!empty($filter_customer)) $where = "WHERE CUSTOMER = '$filter_customer'";
+		    if (!empty($filter_customer)) $where = "WHERE A.CUSTOMER = '$filter_customer'";
 		    $filter_sdate       = !empty($this->input->post('sdate')) ? date("Ymd", strtotime($this->input->post('sdate'))) : $sdate;
 		    $filter_edate       = !empty($this->input->post('edate')) ? date("Ymd", strtotime($this->input->post('edate'))) : $edate;
 		    $filter_data["sdate"] = $filter_sdate;
 		    $filter_data["edate"] = $filter_edate;
-		    $where .= " AND (ORDER_DATE BETWEEN '$filter_sdate' AND '$filter_edate')";
-		    $filter_item        = !empty($this->input->post('item')) ? $this->input->post('item') : "";
-		    $filter_data["item"] = $filter_item;
-		    if (!empty($filter_item)) $where .= " AND ITEM = '$filter_item'";
-		    $filter_no_order    = !empty($this->input->post('no_order')) ? $this->input->post('no_order') : "";
-		    $filter_data["no_order"] = $filter_no_order;
-		    if (!empty($filter_no_order)) $where .= " AND ORDER_NO = '$filter_no_order'";		    
+		    $where .= " AND (A.REQ_DATE BETWEEN '$filter_sdate' AND '$filter_edate')";	    
 		}
-		$order_data = $this->M_User->m_order_user($where)->result();
+		$order_data = $this->M_User->m_order_broiler($where)->result();
 
 		$data['filter_data']    = $filter_data;
-		$data['order_data'] = $order_data;
-		$data['items']      = $this->M_Main->m_items()->result();
-		$data['list_customer'] = $list_customer;
-		$this->load->view('afterLogin/order/index',$data);
+		$data['order_data'] 	= $order_data;
+		$data['list_customer'] 	= $list_customer;
+		$this->load->view('afterLogin/broielr/list',$data);
 	}
 
 	public function entry() {

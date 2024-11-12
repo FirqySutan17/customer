@@ -125,6 +125,28 @@ class M_User extends CI_Model {
 		return $data;
 	}
 
+	public function m_order_broiler($where) {
+	    $hasil = "
+	        SELECT 
+				A.*, B.PLAZMA_NAME, C.FARM_NAME, D.FULL_NAME
+			FROM
+				TR_SS_ORDER_REQUEST A,
+				TR_CD_PLAZMA B, 
+				TR_CD_FARM C,
+				CD_CUSTOMER D
+			WHERE 
+				A.PLAZMA 	    = B.PLAZMA (+) AND
+				A.FARM 		    = C.FARM (+) AND
+				A.CUSTOMER 		= TRIM(D.CUST)
+				$where
+			ORDER BY A.REQ_NO DESC
+	    ";
+	   // dd($hasil);
+	    $data = $this->db->query($hasil);
+		return $data;
+	}
+
+
 	public function m_invoice_user($where) {
 	    // $hasil = "
 	    //     SELECT A.*, B.SHORT_NAME
