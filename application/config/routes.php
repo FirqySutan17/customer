@@ -44,8 +44,8 @@ $route['kritik-saran'] = 'C_Main/kritik_saran';
 $route['broiler'] = 'backend/C_Broiler/entry';
 $route['broiler/do_create'] = 'backend/C_Broiler/do_create';
 $route['broiler/report'] = 'backend/C_Broiler/index';
-$route['broierl/do_cancel'] 	= 'backend/C_Broiler/do_cancel';
-$route['broierl/pdf/(:any)'] 	= 'backend/C_Broiler/generate_pdf/$1';
+$route['broiler/do_cancel'] 	= 'backend/C_Broiler/do_cancel';
+$route['broiler/pdf/(:any)'] 	= 'backend/C_Broiler/generate_pdf/$1';
 
 $route['order'] = 'backend/C_Order/index';
 $route['delivery'] = 'backend/C_Delivery/index';
