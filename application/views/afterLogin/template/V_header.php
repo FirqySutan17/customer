@@ -130,6 +130,10 @@
                         <?php endif ?>
                         <li class="<?= ($menu == 'sales_list') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>sales_list"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Penjualan</span></a>
                         </li>
+
+                        <?php if ($this->session->userdata('admin') == 'N'): ?>
+                            <li class=""><a class="d-flex align-items-center" href="<?= base_url();?>broiler/list"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Order Broiler</span></a></li>
+                        <?php endif ?>
                         <!-- <li class="<?= ($menu == 'list_transfer') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>list_transfer"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Transfer</span></a>
                         </li> -->
                         <li class="<?= ($menu == 'transfer_confirmation') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>transfer_confirmation"><i data-feather="circle"></i><span class="menu-item text-truncate" >Konfirmasi Transfer</span></a>
