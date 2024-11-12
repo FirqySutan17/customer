@@ -26,11 +26,11 @@ class C_Broiler extends CI_Controller {
 		    "sdate"     => "",
 		    "edate"     => "",
 		];
-		$where = "WHERE A.CUSTOMER = '$customer' AND (A.REQ_DATE BETWEEN '$sdate' AND '$edate')";
+		$where = " AND A.CUSTOMER = '$customer' AND (A.REQ_DATE BETWEEN '$sdate' AND '$edate')";
 		if ($this->input->post('submit')) {
 		    $filter_customer    = !empty($this->input->post('customer')) ? $this->input->post('customer') : $customer;
 		    $filter_data["customer"] = $filter_customer;
-		    if (!empty($filter_customer)) $where = "WHERE A.CUSTOMER = '$filter_customer'";
+		    if (!empty($filter_customer)) $where = " AND A.CUSTOMER = '$filter_customer'";
 		    $filter_sdate       = !empty($this->input->post('sdate')) ? date("Ymd", strtotime($this->input->post('sdate'))) : $sdate;
 		    $filter_edate       = !empty($this->input->post('edate')) ? date("Ymd", strtotime($this->input->post('edate'))) : $edate;
 		    $filter_data["sdate"] = $filter_sdate;
