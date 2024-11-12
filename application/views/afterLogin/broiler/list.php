@@ -54,7 +54,7 @@
                         <div class="card-body border-bottom">
                             
                             <div class="card-datatable table-responsive pt-0">
-                                <table id="example" class="table table-bordered table-striped">
+                                <table id="example" class="table table-bordered table-striped" style="font-size:12px">
                                     <thead class="table-light">
                                         <tr>
                                             <th>NO</th>
@@ -96,6 +96,12 @@
                                             <td style="text-align: center"><?= number_format($v['DELIVERY_QTY']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['DELIVERY_BW']) ?></td>
                                             <td style="text-align: center">
+                                                <?php if ($v['CONFIRM_STATUS'] != 'Y' && $v['STATUS'] == 'N'): ?>
+                                                    <a href="javascript:void(0)" onclick="deleteRow(`<?= $v['REQ_NO'] ?>`)" class="btn btn-sm btn-show-detail"><i class="fas fa-xmark text-primary"></i></a>
+                                                <?php endif ?>
+                                                <?php if ($v['CONFIRM_STATUS'] == 'Y'): ?>
+                                                    <a href="<?= base_url('broiler/pdf/'.$v['REQ_NO']) ?>" target="_blank" class="btn btn-sm btn-show-detail"><i class="fas fa-file-pdf text-danger"></i></a>
+                                                <?php endif ?>
                                             </td>
                                         </tr>
                                         <?php endforeach ?>
@@ -114,10 +120,29 @@
     </div>
     <!-- END: Content-->
 
+    <form id="form-cancel" action="<?= base_url('broiler/do_cancel') ?>" method="POST">
+        <input type="hidden" id="request_no" name="req_no">
+    </form>
+
 <?php include APPPATH.'views/afterLogin/template/V_footer.php' ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready(function() {
         $('#example').DataTable();
         $('.select2').select2();
     } );
+
+    function deleteRow(reqNo) {
+        Swal.fire({
+            type: "warning",
+            title: "CANCEL ORDER",
+            showCancelButton: true,
+            text: "ANDA YAKIN INGIN CANCEL ORDER ?"
+        }).then((result) => {
+            if (result.value) {
+                $("#request_no").val(reqNo);
+                $("#form-cancel").submit();
+            }
+        });
+    }
 </script>

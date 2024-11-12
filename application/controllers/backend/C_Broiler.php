@@ -92,6 +92,30 @@ class C_Broiler extends CI_Controller {
 		redirect('broiler');
 	}
 
+	public function do_cancel() {
+		if ($this->input->server('REQUEST_METHOD') === 'POST') {
+			$post = $this->input->post();
+			$request_no = $post['req_no'];
+			try {
+				$order_request = [
+					"STATUS"	=> "Y",
+					"MOD_DATE"	=> date('Ymd')
+				];
+
+				$save = $this->db->update('TR_SS_ORDER_REQUEST', $order_request, array('REQ_NO' => $request_no));
+				if ($save) {
+					$this->session->set_flashdata('success', "Update data success");
+					return redirect('broiler/report');
+				}
+			} catch (Exception $e) {
+				dd($e->getMessage());
+			}
+			$this->session->set_flashdata('error', "Update data failed");
+			return redirect('broiler/report');
+		}
+		$this->session->set_flashdata('error', "Access denied");
+        return redirect('broiler/report');
+	}
 	
 	private function generateOrderNo() {
 		$generated_no = date('Ymd')."RQ";
