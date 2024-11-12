@@ -15,7 +15,7 @@
                             <div class="card">
                                 <h4 class="card-header">Filter Data</h4>
                                 <div class="card-body">
-                                    <form action="<?= base_url('order') ?>" method="post">
+                                    <form action="<?= base_url('broiler/report') ?>" method="post">
                                         <div class="row">
                                             <?php if($this->session->userdata('admin') == "Y"): ?>
                                                 <div class="col-md-6">
