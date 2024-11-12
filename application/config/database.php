@@ -28,7 +28,7 @@ $db['default'] = array(
 $brs ='
   (DESCRIPTION =
     (ADDRESS_LIST =
-      (ADDRESS = (PROTOCOL = TCP)(HOST = 103.209.6.32)(PORT = 1521))
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 10.137.26.67)(PORT = 1521))
     )
     (CONNECT_DATA =
       (SERVER = DEDICATED)

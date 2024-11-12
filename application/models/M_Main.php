@@ -29,8 +29,10 @@ class M_Main extends CI_Model {
 	            	'admin' => $usersuja->IS_ADMIN,
 	            	'email' => $usersuja->EMAIL,
 	            	'id_user'   => $usersuja->ID_USER,
-	            	'cust_name'	=> $usersuja->CUSTOMER_NAME
+	            	'cust_name'	=> $usersuja->CUSTOMER_NAME,
+					'phone' => $usersuja->PHONE
 	         	);
+				// dd($datasuja);
 	            $this->session->set_userdata($datasuja);
 	            return 1;
             }

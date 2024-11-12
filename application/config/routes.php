@@ -41,6 +41,8 @@ $route['list_transfer'] = 'backend/C_User/list_transfer';
 $route['kritik-saran'] = 'C_Main/kritik_saran';
 
 // LIST DATA
+$route['broiler'] = 'backend/C_Broiler/entry';
+$route['broiler/do_create'] = 'backend/C_Broiler/do_create';
 $route['order'] = 'backend/C_Order/index';
 $route['delivery'] = 'backend/C_Delivery/index';
 $route['invoice'] = 'backend/C_Invoice/index';
