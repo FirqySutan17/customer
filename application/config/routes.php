@@ -41,8 +41,9 @@ $route['list_transfer'] = 'backend/C_User/list_transfer';
 $route['kritik-saran'] = 'C_Main/kritik_saran';
 
 // LIST DATA
-$route['broiler'] 				= 'backend/C_Broiler/entry';
-$route['broiler/do_create'] 	= 'backend/C_Broiler/do_create';
+$route['broiler'] = 'backend/C_Broiler/entry';
+$route['broiler/do_create'] = 'backend/C_Broiler/do_create';
+$route['broiler/report'] = 'backend/C_Broiler/index';
 $route['broierl/do_cancel'] 	= 'backend/C_Broiler/do_cancel';
 $route['broierl/pdf/(:any)'] 	= 'backend/C_Broiler/generate_pdf/$1';
 
