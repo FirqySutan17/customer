@@ -42,7 +42,7 @@ class C_Broiler extends CI_Controller {
 		$data['filter_data']    = $filter_data;
 		$data['order_data'] 	= $order_data;
 		$data['list_customer'] 	= $list_customer;
-		$this->load->view('afterLogin/broielr/list',$data);
+		$this->load->view('afterLogin/broiler/list',$data);
 	}
 
 	public function entry() {
