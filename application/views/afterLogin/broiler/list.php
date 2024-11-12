@@ -73,13 +73,12 @@
                                             <th>NO</th>
                                             <th>REQUEST NO</th>
                                             <th style="text-align: center">DATE</th>
-                                            <th style="text-align: center">CUSTOMER</th>
                                             <th style="text-align: center">REQ QTY</th>
                                             <th style="text-align: center">REQ BW</th>
-                                            <th style="text-align: center">PLAZMA</th>
-                                            <th style="text-align: center">FARM</th>
                                             <th style="text-align: center">QTY</th>
                                             <th style="text-align: center">BW</th>
+                                            <th style="text-align: center">PRICE</th>
+                                            <th style="text-align: center">AMOUNT</th>
                                             <th style="text-align: center">ORDER STATUS</th>
                                             <th style="text-align: center">CONFIRM STATUS</th>
                                             <th style="text-align: center">CONFIRM ORDER NO</th>
@@ -95,13 +94,12 @@
                                             <td style="text-align: center"><?= $i + 1 ?></td>
                                             <td style="text-align: center">#<STRONG><?= $v['REQ_NO'] ?></STRONG></td>
                                             <td style="text-align: center"><?= date('d M Y', strtotime($v['REQ_DATE'])) ?></td>
-                                            <td style="text-align: center"><?= $v['FULL_NAME'] ?></td>
-                                            <td style="text-align: center"><?= number_format($v['REQ_QTY']) ?></td>
-                                            <td style="text-align: center"><?= number_format($v['REQ_BW']) ?></td>
                                             <td style="text-align: center"><?= $v['PLAZMA'] ?> - <?= $v['PLAZMA_NAME'] ?></td>
                                             <td style="text-align: center"><?= $v['FARM'] ?> - <?= $v['FARM_NAME'] ?></td>
                                             <td style="text-align: center"><?= number_format($v['QTY']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['BW']) ?></td>
+                                            <td style="text-align: center"><?= number_format($v['UP']) ?></td>
+                                            <td style="text-align: center"><?= number_format($v['AMOUNT']) ?></td>
                                             <td style="text-align: center"><?= $v['STATUS'] == 'N' ? 'ORDERED' : 'CANCELED' ?></td>
                                             <td style="text-align: center"><?= $v['CONFIRM_STATUS'] == 'Y' ? 'CONFIRMED' : 'NOT CONFIRM' ?></td>
                                             <td style="text-align: center">#<STRONG><?= $v['ORDER_NO'] ?></STRONG></td>
