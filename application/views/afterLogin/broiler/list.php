@@ -1,5 +1,18 @@
 <?php $menu = "broiler_list"; ?>
 <?php include APPPATH.'views/afterLogin/template/V_header.php'; ?>
+
+    <style>
+        table.table-bordered.dataTable th {
+            font-size: 10px !important;
+            text-transform: uppercase !important;
+            padding: 10px 20px !important;
+        }
+
+        table.table-bordered.dataTable td {
+            font-size: 10px !important;
+            text-transform: uppercase !important;
+        }
+    </style>
     <!-- BEGIN: Content-->
     <div class="app-content content ">
         <div class="content-overlay"></div>
@@ -58,22 +71,22 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th>NO</th>
-                                            <th>REQUEST</th>
-                                            <th>DATE</th>
-                                            <th>CUSTOMER</th>
-                                            <th>REQ QTY</th>
-                                            <th>REQ BW</th>
-                                            <th>PLAZMA</th>
-                                            <th>FARM</th>
-                                            <th>QTY</th>
-                                            <th>BW</th>
-                                            <th>ORDER STATUS</th>
-                                            <th>CONFIRM STATUS</th>
-                                            <th>CONFIRM ORDER NO</th>
-                                            <th>CONFIRM REMARK</th>
-                                            <th>DELIVERY QTY</th>
-                                            <th>DELIVERY BW</th>
-                                            <th>ACTION</th>
+                                            <th>REQUEST NO</th>
+                                            <th style="text-align: center">DATE</th>
+                                            <th style="text-align: center">CUSTOMER</th>
+                                            <th style="text-align: center">REQ QTY</th>
+                                            <th style="text-align: center">REQ BW</th>
+                                            <th style="text-align: center">PLAZMA</th>
+                                            <th style="text-align: center">FARM</th>
+                                            <th style="text-align: center">QTY</th>
+                                            <th style="text-align: center">BW</th>
+                                            <th style="text-align: center">ORDER STATUS</th>
+                                            <th style="text-align: center">CONFIRM STATUS</th>
+                                            <th style="text-align: center">CONFIRM ORDER NO</th>
+                                            <th style="text-align: center">CONFIRM REMARK</th>
+                                            <th style="text-align: center">DELIVERY QTY</th>
+                                            <th style="text-align: center">DELIVERY BW</th>
+                                            <th style="text-align: center">ACTION</th>
                                         </tr>
                                     </thead>
                                     <tbody>
