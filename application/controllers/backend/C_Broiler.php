@@ -76,12 +76,12 @@ class C_Broiler extends CI_Controller {
 			"STATUS"				=> "N",
 			"SEQ"					=> 1,
 			"ITEM"					=> '10001001',
-			"QTY"					=> $this->input->post('qty'),
-			"BW"					=> $this->input->post('bw'),
+			"REQ_QTY"				=> $this->input->post('qty'),
+			"REQ_BW"				=> $this->input->post('bw'),
 			"CUST_PHONE_NO" 		=> $this->session->userdata('phone'),
 			"REG_DATE"				=> date('Ymd')
 		];
-		echo "<pre/>";print_r($order_request);exit;
+		// echo "<pre/>";print_r($order_request);exit;
 
 		$hasil = $this->db->insert("TR_SS_ORDER_REQUEST", $order_request);
 		// echo "<pre/>";print_r($hasil);exit;
