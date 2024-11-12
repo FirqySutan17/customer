@@ -37,7 +37,7 @@ class C_Broiler extends CI_Controller {
 		    $filter_data["edate"] = $filter_edate;
 		    $where .= " AND (A.REQ_DATE BETWEEN '$filter_sdate' AND '$filter_edate')";	    
 		}
-		$order_data = $this->M_User->m_order_broiler($where)->result();
+		$order_data = $this->M_User->m_order_broiler($where)->result_array();
 
 		$data['filter_data']    = $filter_data;
 		$data['order_data'] 	= $order_data;
