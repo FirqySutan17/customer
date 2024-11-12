@@ -94,8 +94,8 @@
                                             <td style="text-align: center"><?= $i + 1 ?></td>
                                             <td style="text-align: center">#<STRONG><?= $v['REQ_NO'] ?></STRONG></td>
                                             <td style="text-align: center"><?= date('d M Y', strtotime($v['REQ_DATE'])) ?></td>
-                                            <td style="text-align: center"><?= $v['PLAZMA'] ?> - <?= $v['PLAZMA_NAME'] ?></td>
-                                            <td style="text-align: center"><?= $v['FARM'] ?> - <?= $v['FARM_NAME'] ?></td>
+                                            <td style="text-align: center"><?= number_format($v['REQ_QTY']) ?></td>
+                                            <td style="text-align: center"><?= number_format($v['REQ_BW']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['QTY']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['BW']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['UP']) ?></td>
