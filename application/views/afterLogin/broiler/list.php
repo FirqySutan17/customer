@@ -1,4 +1,4 @@
-<?php $menu = ""; ?>
+<?php $menu = "broiler_list"; ?>
 <?php include APPPATH.'views/afterLogin/template/V_header.php'; ?>
     <!-- BEGIN: Content-->
     <div class="app-content content ">
@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <h4 class="card-header">Filter Data</h4>
+                                <h4 class="card-header">Pilihan Data</h4>
                                 <div class="card-body">
                                     <form action="<?= base_url('broiler/report') ?>" method="post">
                                         <div class="row">
@@ -55,7 +55,7 @@
                             
                             <div class="card-datatable table-responsive pt-0">
                                 <table id="example" class="table table-bordered table-striped">
-                                    <thead>
+                                    <thead class="table-light">
                                         <tr>
                                             <th>NO</th>
                                             <th>REQUEST</th>

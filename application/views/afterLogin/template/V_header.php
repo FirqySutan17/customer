@@ -132,7 +132,7 @@
                         </li>
 
                         <?php if ($this->session->userdata('admin') == 'N'): ?>
-                            <li class=""><a class="d-flex align-items-center" href="<?= base_url();?>broiler/report"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Order Broiler</span></a></li>
+                            <li class=""><a class="<?= ($menu == 'broiler_list') ? 'active' : '' ?> d-flex align-items-center" href="<?= base_url();?>broiler/report"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Order Broiler</span></a></li>
                         <?php endif ?>
                         <!-- <li class="<?= ($menu == 'list_transfer') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>list_transfer"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Transfer</span></a>
                         </li> -->
