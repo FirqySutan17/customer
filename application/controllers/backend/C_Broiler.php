@@ -78,18 +78,18 @@ class C_Broiler extends CI_Controller {
 		// echo "<pre/>";print_r($hasil);exit;
 		if ($hasil) {
 			$this->session->set_flashdata('message', '
-				<div class="alert alert-success" role="alert">
+				<div class="alert alert-success p-2" role="alert">
 					<strong>Sukses!</strong> Data berhasil DISIMPAN
 				</div>
 			');
 		} else {
 			$this->session->set_flashdata('message', '
-			<div class="alert alert-danger" role="alert">
+			<div class="alert alert-danger p-2" role="alert">
 						<strong>Gagal!</strong> Data gagal DISIMPAN 
 					</div>
 			');
 		}
-		redirect('broiler');
+		redirect('broiler/report');
 	}
 
 	public function do_cancel() {
@@ -104,17 +104,29 @@ class C_Broiler extends CI_Controller {
 
 				$save = $this->db->update('TR_SS_ORDER_REQUEST', $order_request, array('REQ_NO' => $request_no));
 				if ($save) {
-					$this->session->set_flashdata('success', "Update data success");
+					$this->session->set_flashdata('message', '
+						<div class="alert alert-success p-2" role="alert">
+									<strong>Gagal!</strong> Data berhasil dicancel 
+								</div>
+						');
 					return redirect('broiler/report');
 				}
 			} catch (Exception $e) {
 				dd($e->getMessage());
 			}
-			$this->session->set_flashdata('error', "Update data failed");
+			$this->session->set_flashdata('message', '
+				<div class="alert alert-danger p-2" role="alert">
+							<strong>Gagal!</strong> Data gagal dicancel 
+						</div>
+				');
 			return redirect('broiler/report');
 		}
-		$this->session->set_flashdata('error', "Access denied");
-        return redirect('broiler/report');
+		$this->session->set_flashdata('message', '
+			<div class="alert alert-danger p-2" role="alert">
+						<strong>Gagal!</strong> Data gagal dicancel 
+					</div>
+			');
+    return redirect('broiler/report');
 	}
 	
 	private function generateOrderNo() {

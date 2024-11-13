@@ -23,6 +23,7 @@
             <div class="content-body">
                 <!-- users list start -->
                 <section class="app-user-list">
+                <?php echo $this->session->flashdata('message') ?>
                     <div class="row">
                         <div class="col-12">
                             <div class="card">

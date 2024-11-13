@@ -84,7 +84,7 @@
                     <!-- list and filter start -->
                     <div class="card">
                         <div class="card-body border-bottom">
-                            
+                            <?php echo $this->session->flashdata('message') ?>
                             <div class="card-datatable table-responsive pt-0" style="overflow: hidden;">
                                 <form id="orderForm" action="<?= base_url();?>broiler/do_create" method="POST" enctype="multipart/form-data">
                                     <div class="row">
