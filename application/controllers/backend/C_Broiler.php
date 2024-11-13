@@ -98,7 +98,7 @@ class C_Broiler extends CI_Controller {
 			$request_no = $post['req_no'];
 			try {
 				$order_request = [
-					"STATUS"	=> "Y",
+					"STATUS"	=> "C",
 					"MOD_DATE"	=> date('Ymd')
 				];
 
