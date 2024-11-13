@@ -110,9 +110,9 @@
                                                 <?php if ($v['CONFIRM_STATUS'] != 'Y' && $v['STATUS'] == 'N'): ?>
                                                     <a href="javascript:void(0)" onclick="deleteRow(`<?= $v['REQ_NO'] ?>`)" class="btn btn-sm btn-show-detail"><i class="fas fa-xmark text-primary"></i></a>
                                                 <?php endif ?>
-                                                <?php if ($v['CONFIRM_STATUS'] == 'Y'): ?>
+                                                <!-- <?php if ($v['CONFIRM_STATUS'] == 'Y'): ?>
                                                     <a href="<?= base_url('broiler/pdf/'.$v['REQ_NO']) ?>" target="_blank" class="btn btn-sm btn-show-detail"><i class="fas fa-file-pdf text-danger"></i></a>
-                                                <?php endif ?>
+                                                <?php endif ?> -->
                                             </td>
                                         </tr>
                                         <?php endforeach ?>
