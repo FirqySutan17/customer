@@ -108,12 +108,12 @@
                                             <td style="text-align: center"><?= number_format($v['DELIVERY_QTY']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['DELIVERY_BW']) ?></td>
                                             <td style="text-align: center">
-                                                <?php if ($v['CONFIRM_STATUS'] != 'CONFIRM' && $v['STATUS'] == 'REQUESTED'): ?>
+                                                <?php if ($v['CONFIRM_STATUS'] == 'NOT CONFIRM' && $v['STATUS'] == 'REQUESTED'): ?>
                                                     <a href="javascript:void(0)" onclick="deleteRow(`<?= $v['REQ_NO'] ?>`)" class="btn btn-sm btn-show-detail"><i class="fas fa-xmark text-primary"></i></a>
                                                 <?php endif ?>
-                                                <!-- <?php if ($v['CONFIRM_STATUS'] == 'Y'): ?>
+                                                <?php if ($v['CONFIRM_STATUS'] == 'CONFIRM'): ?>
                                                     <a href="<?= base_url('broiler/pdf/'.$v['REQ_NO']) ?>" target="_blank" class="btn btn-sm btn-show-detail"><i class="fas fa-file-pdf text-danger"></i></a>
-                                                <?php endif ?> -->
+                                                <?php endif ?>
                                             </td>
                                         </tr>
                                         <?php endforeach ?>
