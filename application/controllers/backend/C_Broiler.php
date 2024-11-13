@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
 class C_Broiler extends CI_Controller {
 	public function __construct()
 	{
@@ -64,7 +66,8 @@ class C_Broiler extends CI_Controller {
 			"ORDER_CLASS"			=> '11',
 			"CUSTOMER"				=> $this->session->userdata('cust'),
 			"REMARKS"				=> $this->input->post('remark'),
-			"STATUS"				=> "N",
+			"STATUS"					=> "N",
+			"CONFIRM_STATUS"	=> "N",
 			"SEQ"					=> 1,
 			"ITEM"					=> '10001001',
 			"REQ_QTY"				=> $this->input->post('qty'),
@@ -153,6 +156,84 @@ class C_Broiler extends CI_Controller {
 
 		$generated_no = $generated_no.$no;
 		return $generated_no;
+	}
+
+	public function generate_pdf($order_no) {
+		$data_detail = $this->get_orderdetail($order_no);
+	
+		$this->load->library('pdf');
+		$data['detail'] = $data_detail;
+		$html = $this->load->view('afterLogin/broiler/pdf', $data, TRUE);
+		
+		$this->dompdf->loadHtml($html);
+		
+		// Set paper size and orientation
+		$this->dompdf->setPaper('A4', 'portrait');
+		
+		// Enable loading of remote resources
+		$this->dompdf->set_option('isRemoteEnabled', TRUE);
+		
+		// Render the HTML as PDF
+		$this->dompdf->render();
+		
+		// Output the generated PDF (1 = download and 0 = preview)
+		$filename = "request_order_" . date("Y-m-d_H:i:s");
+		$this->dompdf->stream($filename . ".pdf", array("Attachment" => 0));
+	}
+
+	private function get_orderdetail($order_no) {
+		$query = "
+			SELECT ROWNUM,
+				C.COMPANY,
+				C.ORDER_NO,
+				C.ORDER_DATE,
+				C.CUSTOMER,
+				FULL_NAME,
+				ADDRESS1 || '' || ADDRESS2 AS ADDRESS,
+				TELEPHONE_NO || '/' ||MOBILE_PHONE PHONE,
+				FAX_NO,
+				SUJA.FN_ITEM_NAME('L',C.ITEM) ITEM_NAME,
+				SUM(C.QTY) QTY, 
+				C.PLANT,
+				FN_CODE_NAME('AA',C.COMPANY)               AS COMPANY_NAME,
+				FN_CODE_NAME('TR20',C.PLANT)                 AS PLANT_NAME,
+				C.NOTE ,
+				C.FARM,
+				SUJA.FN_TR_FARM_NAME('01',C.PLAZMA,C.FARM)  AS FARM_NAME, 
+				SUJA.FN_TR_FARM_address('01',C.PLAZMA,C.FARM) AS FARM_ADDRESS,
+				C.PLAZMA,
+				C.REMARKS,
+				B.REGION_CODE
+			FROM SUJA.CD_CUSTOMER    B,
+				TR_SS_ORDER_REQUEST    C
+			WHERE C.CUSTOMER    = B.CUST
+			AND C.COMPANY     = '01'
+			AND C.REQ_NO    = '$order_no'  
+			GROUP BY ROWNUM, C.COMPANY, C.ORDER_NO, C.ORDER_DATE, C.CUSTOMER,  C.ITEM, C.PLANT, 
+					FULL_NAME, ADDRESS1, ADDRESS2, TELEPHONE_NO, MOBILE_PHONE, FAX_NO,  C.NOTE, C.FARM, C.PLAZMA, C.REMARKS, B.REGION_CODE
+		";
+		$data['REQUEST_ORDER'] = $this->db->query("select 
+				A.*,
+                B.PLAZMA_NAME,
+				C.FARM_NAME,
+                D.FULL_NAME,
+				D.REGION_CODE,
+				FN_CODE_NAME('AE',D.REGION_CODE)                 AS AREA_NAME
+			FROM
+                TR_SS_ORDER_REQUEST A,
+                TR_CD_PLAZMA B, 
+                TR_CD_FARM C,
+                CD_CUSTOMER D
+			where 
+                A.PLAZMA 	    = B.PLAZMA (+) AND
+				A.FARM 		    = C.FARM (+) AND
+                A.CUSTOMER 		= TRIM(D.CUST) AND
+				A.REQ_NO = '$order_no'
+			ORDER BY REQ_NO DESC")->row_array();
+		$data['ORDER'] 		= $this->db->query($query)->row_array();
+		// dd($data);
+		// $data 				= $this->db->query($query)->result_array();
+		return $data;
 	}
 	
 	public function detail($ID_USER) {
