@@ -131,7 +131,7 @@
                         <li class="<?= ($menu == 'sales_list') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>sales_list"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Penjualan</span></a>
                         </li>
                     
-                            <li class="<?= ($menu == 'broiler_list') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>broiler/report"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Order Broiler</span></a></li>
+                            <li class="<?= ($menu == 'broiler_list') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>broiler/report"><i data-feather="circle"></i><span class="menu-item text-truncate" >Status Order Broiler</span></a></li>
                         <!-- <li class="<?= ($menu == 'list_transfer') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>list_transfer"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Transfer</span></a>
                         </li> -->
                         <li class="<?= ($menu == 'transfer_confirmation') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>transfer_confirmation"><i data-feather="circle"></i><span class="menu-item text-truncate" >Konfirmasi Transfer</span></a>
