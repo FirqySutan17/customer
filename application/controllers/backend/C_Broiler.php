@@ -126,7 +126,7 @@ class C_Broiler extends CI_Controller {
 						<strong>Gagal!</strong> Data gagal dicancel 
 					</div>
 			');
-    return redirect('broiler/report');
+    	return redirect('broiler/report');
 	}
 	
 	private function generateOrderNo() {

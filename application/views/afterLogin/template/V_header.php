@@ -117,25 +117,27 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item <?= ($menu == 'information') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url() ?>"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Beranda</span></a>
+                <li class=" nav-item <?= ($menu == 'information') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>broiler/report"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Beranda</span></a>
                 </li>
                 
                 <li class=""><a class="d-flex align-items-center" href="<?= base_url();?>broiler"><i data-feather="circle"></i><span class="menu-item text-truncate" >Order Broiler</span></a></li>
-                
+                <li class="<?= ($menu == 'broiler_list') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>broiler"><i data-feather="circle"></i><span class="menu-item text-truncate" >Request Status</span></a></li>
                 <li class="nav-item has-sub "><a class="d-flex align-items-center"><i data-feather="clipboard"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Data <?= $this->session->userdata('admin') == 'N' ? 'Saya' : 'Pelanggan' ?></span></a>
                     <ul class="menu-content">
                         <li class="<?= ($menu == 'transfer_confirmation') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>transfer_confirmation"><i data-feather="circle"></i><span class="menu-item text-truncate" >Konfirmasi Transfer</span></a>
                         </li>
+                        
                         <li class="<?= ($menu == 'sales_list') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>sales_list"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Penjualan</span></a>
+                        </li>
+                        <li class="<?= ($menu == 'list_remainder') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>list_remainder"><i data-feather="circle"></i><span class="menu-item text-truncate" >Riwayat AR</span></a>
                         </li>
                         <?php if ($this->session->userdata('admin') == 'N'): ?>
                             <li class="<?= ($menu == 'data') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>data"><i data-feather="circle"></i><span class="menu-item text-truncate" >Grafik Data Penjualan</span></a>
                             </li>
                         <?php endif ?>
-                        <li class="<?= ($menu == 'list_remainder') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>list_remainder"><i data-feather="circle"></i><span class="menu-item text-truncate" >Riwayat AR</span></a>
-                        </li>
+                        
                     
-                            <li class="<?= ($menu == 'broiler_list') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>broiler/report"><i data-feather="circle"></i><span class="menu-item text-truncate" >Request Status</span></a></li>
+                            <!-- <li class="<?= ($menu == 'broiler_list') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>broiler/report"><i data-feather="circle"></i><span class="menu-item text-truncate" >Request Status</span></a></li> -->
                         <!-- <li class="<?= ($menu == 'list_transfer') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>list_transfer"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Transfer</span></a>
                         </li> -->
                        
