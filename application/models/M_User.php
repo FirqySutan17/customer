@@ -128,7 +128,20 @@ class M_User extends CI_Model {
 	public function m_order_broiler($where) {
 	    $hasil = "
 	        SELECT 
-				A.*, B.PLAZMA_NAME, C.FARM_NAME, D.FULL_NAME
+				A.*, 
+				B.PLAZMA_NAME, 
+				C.FARM_NAME, 
+				D.FULL_NAME, 
+				CASE NVL(A.STATUS, 'N') 
+					WHEN 'N' THEN 'REQUESTED'
+					WHEN 'Y' THEN 'ORDERED'
+					WHEN 'C' THEN 'CANCELED'
+				END AS STATUS,
+				CASE NVL(A.CONFIRM_STATUS, 'N')  
+					WHEN 'N' THEN 'NOT CONFIRM'
+					WHEN 'P' THEN 'PENDING'
+					WHEN 'Y' THEN 'CONFIRM'
+				END AS CONFIRM_STATUS
 			FROM
 				TR_SS_ORDER_REQUEST A,
 				TR_CD_PLAZMA B, 

@@ -124,18 +124,21 @@
                 
                 <li class="nav-item has-sub "><a class="d-flex align-items-center"><i data-feather="clipboard"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Data <?= $this->session->userdata('admin') == 'N' ? 'Saya' : 'Pelanggan' ?></span></a>
                     <ul class="menu-content">
+                        <li class="<?= ($menu == 'transfer_confirmation') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>transfer_confirmation"><i data-feather="circle"></i><span class="menu-item text-truncate" >Konfirmasi Transfer</span></a>
+                        </li>
+                        <li class="<?= ($menu == 'sales_list') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>sales_list"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Penjualan</span></a>
+                        </li>
                         <?php if ($this->session->userdata('admin') == 'N'): ?>
                             <li class="<?= ($menu == 'data') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>data"><i data-feather="circle"></i><span class="menu-item text-truncate" >Grafik Data Penjualan</span></a>
                             </li>
                         <?php endif ?>
-                        <li class="<?= ($menu == 'sales_list') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>sales_list"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Penjualan</span></a>
+                        <li class="<?= ($menu == 'list_remainder') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>list_remainder"><i data-feather="circle"></i><span class="menu-item text-truncate" >Riwayat AR</span></a>
                         </li>
                     
-                            <li class="<?= ($menu == 'broiler_list') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>broiler/report"><i data-feather="circle"></i><span class="menu-item text-truncate" >Status Order Broiler</span></a></li>
+                            <li class="<?= ($menu == 'broiler_list') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>broiler/report"><i data-feather="circle"></i><span class="menu-item text-truncate" >Request Status</span></a></li>
                         <!-- <li class="<?= ($menu == 'list_transfer') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>list_transfer"><i data-feather="circle"></i><span class="menu-item text-truncate" >Data Transfer</span></a>
                         </li> -->
-                        <li class="<?= ($menu == 'transfer_confirmation') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>transfer_confirmation"><i data-feather="circle"></i><span class="menu-item text-truncate" >Konfirmasi Transfer</span></a>
-                        </li>
+                       
                         <?php $currentDate = date("Ymd"); $lastDayCurrentMonth = date("Ymt"); ?>
                         <?php if ($currentDate == $lastDayCurrentMonth): ?>
                             <!-- <li class="<?= ($menu == 'saldo') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>saldo"><i data-feather="circle"></i><span class="menu-item text-truncate" >Konfirmasi Saldo</span></a>
@@ -143,8 +146,7 @@
                             <li class="<?= ($menu == 'list_saldo') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>list_saldo"><i data-feather="circle"></i><span class="menu-item text-truncate" >History Saldo</span></a>
                             </li> -->
                         <?php endif ?>
-                        <li class="<?= ($menu == 'list_remainder') ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url();?>list_remainder"><i data-feather="circle"></i><span class="menu-item text-truncate" >Riwayat AR</span></a>
-                        </li>
+                        
                     </ul>
                 </li>
                 

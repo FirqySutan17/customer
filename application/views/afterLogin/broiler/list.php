@@ -81,7 +81,7 @@
                                             <th style="text-align: center">PRICE</th>
                                             <th style="text-align: center">AMOUNT</th>
                                             <th style="text-align: center">ORDER STATUS</th>
-                                            <th style="text-align: center">CONFIRM STATUS</th>
+                                            <th style="text-align: center">DO STATUS</th>
                                             <th style="text-align: center">CONFIRM ORDER NO</th>
                                             <th style="text-align: center">CONFIRM REMARK</th>
                                             <th style="text-align: center">DELIVERY QTY</th>
@@ -101,14 +101,14 @@
                                             <td style="text-align: center"><?= number_format($v['BW']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['UP']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['AMOUNT']) ?></td>
-                                            <td style="text-align: center"><?= $v['STATUS'] == 'N' ? 'ORDERED' : 'CANCELED' ?></td>
-                                            <td style="text-align: center"><?= $v['CONFIRM_STATUS'] == 'Y' ? 'CONFIRMED' : 'NOT CONFIRM' ?></td>
+                                            <td style="text-align: center"><?= $v['STATUS'] ?></td>
+                                            <td style="text-align: center"><?= $v['CONFIRM_STATUS'] ?></td>
                                             <td style="text-align: center">#<STRONG><?= $v['ORDER_NO'] ?></STRONG></td>
                                             <td style="text-align: center"><?= $v['CONFIRM_REMARK'] ?></td>
                                             <td style="text-align: center"><?= number_format($v['DELIVERY_QTY']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['DELIVERY_BW']) ?></td>
                                             <td style="text-align: center">
-                                                <?php if ($v['CONFIRM_STATUS'] != 'Y' && $v['STATUS'] == 'N'): ?>
+                                                <?php if ($v['CONFIRM_STATUS'] != 'CONFIRM' && $v['STATUS'] == 'REQUESTED'): ?>
                                                     <a href="javascript:void(0)" onclick="deleteRow(`<?= $v['REQ_NO'] ?>`)" class="btn btn-sm btn-show-detail"><i class="fas fa-xmark text-primary"></i></a>
                                                 <?php endif ?>
                                                 <!-- <?php if ($v['CONFIRM_STATUS'] == 'Y'): ?>
