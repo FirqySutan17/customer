@@ -55,7 +55,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+                                            <div class="row mt-2">
+                                                <div class="col-md-12">
+                                                    <input type="submit" class="btn btn-info" name="submit" value="Filter">
+                                                </div>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
