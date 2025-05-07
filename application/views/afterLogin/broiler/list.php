@@ -80,6 +80,7 @@
                                             <th style="text-align: center">DATE</th>
                                             <th style="text-align: center">REQ QTY</th>
                                             <th style="text-align: center">REQ BW</th>
+                                            <th style="text-align: center">REMARK</th>
                                             <th style="text-align: center">QTY</th>
                                             <th style="text-align: center">BW</th>
                                             <th style="text-align: center">PRICE</th>
@@ -101,6 +102,7 @@
                                             <td style="text-align: center"><?= date('d M Y', strtotime($v['REQ_DATE'])) ?></td>
                                             <td style="text-align: center"><?= number_format($v['REQ_QTY']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['REQ_BW']) ?></td>
+                                            <td style="text-align: center"><?= $v['REMARKS'] ?></td>
                                             <td style="text-align: center"><?= number_format($v['QTY']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['BW']) ?></td>
                                             <td style="text-align: center"><?= number_format($v['UP']) ?></td>
